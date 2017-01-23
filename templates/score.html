@@ -7,21 +7,54 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Score">
     <meta name="author" content="">
+	<meta http-equiv="refresh" content="9" >
+
     <link rel="icon" href="favicon.ico">
 
-    <title>Score</title>
+    <title>Мониторинг</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
 
   </head>
 
   <body>
 
     <div class="container">
-      <h1>Here will be score</h1>
-    </div><!-- /.container -->
-
+          <h2 class="text-center">Обработано заявок сегодня <span class="green-text label label-default">{{done_today}}</span></h2>
+          <h2 class="text-center">До сих пор не обработаны <span class="red-text label label-default">{{orders|length}}</span></h2>
+    </div><br>
+	 <hr>
+	  	<h1 class="text-center" style="color: {{color}}; font-size: 500%;">{{score}}</h1>
+	 <hr>
+	  <br>
+    <div class="container">
+		{% for order in orders[:10] %}
+			{% if now - order.created > thirty_minutes %}
+				<div class="row red-text bordered">
+					<div class="col-xs-12 text-center">
+						<h3>#{{order.id}}  Стоимость: {{order.price}}</h3>
+						<h4>{{order.created.strftime("%Y-%m-%d %H:%M:%S")}}, {{order.contact_name}}, {{order.contact_phone}}</h4>
+					</div>
+				</div>
+			{% elif now - order.created > seven_minutes %}
+				<div class="row yellow-text bordered">
+					<div class="col-xs-12  text-center">
+						<h3>#{{order.id}}  Стоимость: {{order.price}}</h3>
+						<h4>{{order.created}}, {{order.contact_name}}, {{order.contact_phone}}</h4>
+					</div>
+				</div>
+			{% else %}
+			<div class="row green-text bordered">
+				<div class="col-xs-12  text-center">
+					<h3>#{{order.id}}  Стоимость: {{order.price}}</h3>
+					<h4>{{order.created}}, {{order.contact_name}}, {{order.contact_phone}}</h4>
+				</div>
+			</div>
+			{% endif %}
+		{% endfor %}
+	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>

@@ -1,0 +1,21 @@
+.bordered {
+	border: 1px solid black;
+}
+
+.green-text {
+    color: white;
+    background-color: darkgreen;
+}
+
+.yellow-text {
+    color: aliceblue;
+	background-color: darkgoldenrod;
+}
+
+.red-text {
+    color: aliceblue;
+    background-color:firebrick
+}
+.label {
+    padding: .2em .6em .2em;
+}
