@@ -32,7 +32,8 @@ def score():
                            now=datetime.today(),
                            seven_minutes=timedelta(minutes=7),
                            thirty_minutes=timedelta(minutes=30),
-                           orders=undone_orders_query.all(),
+                           orders=undone_orders_query[:10],
+                           orders_count=undone_orders_query.count(),
                            done_today=done_today,
                            score=score_in_string,
                            color=color)

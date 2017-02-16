@@ -1,4 +1,6 @@
-﻿# Shop Score Page
+# Shop Score Page
+
+Ссылка на Хероку — http://desolate-savannah-48684.herokuapp.com/
 
 Приложение выводит на экран текущий score команды менеджеров - максимальное время ожидания еще необработанных заявок. (Чтобы подстегнуть всех, напомнить о KPI)
 
@@ -32,7 +34,7 @@
 • mobile-first - страница умеет умещаться по ширине в 320px на смартфоне, и при этом адекватно выглядеть на Full HD экране
 
 
-
+—
 # Project Goals
 
 The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
