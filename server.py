@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 from datetime import datetime, timedelta, date
 
+ORDERS_AMOUNT = 10
+
 app = Flask(__name__)
 
 app.config.from_object('config')
@@ -32,7 +34,7 @@ def score():
                            now=datetime.today(),
                            seven_minutes=timedelta(minutes=7),
                            thirty_minutes=timedelta(minutes=30),
-                           orders=undone_orders_query[:10],
+                           orders=undone_orders_query[:ORDERS_AMOUNT],
                            orders_count=undone_orders_query.count(),
                            done_today=done_today,
                            score=score_in_string,

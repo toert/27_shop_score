@@ -30,7 +30,7 @@
      <hr>
       <br>
     <div class="container">
-        {% for order in orders[:10] %}
+        {% for order in orders %}
             {% if now - order.created > thirty_minutes %}
                 <div class="row red-text bordered">
                     <div class="col-xs-12 text-center">
